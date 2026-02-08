@@ -1,0 +1,198 @@
+{
+  "shop_info": {
+    "name": "ARTHOLST",
+    "slogan": "НАТУРАЛЬНЫЙ ХЛОПКОВЫЙ холст!\nПодрамник из ЦЕЛЬНОГО ДЕРЕВА!\nУЛУЧШАЕМ КАЧЕСТВО фото!",
+    "instagram": "@artholst_belarus"
+  },
+  
+  "banners": [
+    {
+      "id": 1,
+      "title": "🔥 Акция! Вторая картина -20%",
+      "subtitle": "При заказе от 2-х картин",
+      "gradient": "linear-gradient(135deg, #667eea 0%, #51cf66 100%)"
+    },
+    {
+      "id": 2,
+      "title": "🎁 Бесплатная доставка",
+      "subtitle": "При заказе от 200 BYN",
+      "gradient": "linear-gradient(135deg, #51cf66 0%, #38d9a9 100%)"
+    },
+    {
+      "id": 3,
+      "title": "⚡️ Скидка на упаковку -15%",
+      "subtitle": "При заказе от 3-х картин",
+      "gradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+    }
+  ],
+  
+  "promo_cards": [
+    {
+      "icon": "🎨",
+      "title": "Улучшение фото",
+      "description": "Бесплатно улучшаем качество изображения"
+    },
+    {
+      "icon": "⚡️",
+      "title": "Быстро",
+      "description": "Изготовление 2-3 дня"
+    },
+    {
+      "icon": "✨",
+      "title": "Гарантия",
+      "description": "Гарантия качества 1 год"
+    }
+  ],
+  
+  "sizes": [
+    {
+      "width": 30,
+      "height": 30,
+      "price": 33,
+      "packaging_price": 10,
+      "delivery_price": 10,
+      "hit": false,
+      "popular": false
+    },
+    {
+      "width": 30,
+      "height": 50,
+      "price": 39,
+      "packaging_price": 10,
+      "delivery_price": 10,
+      "hit": false,
+      "popular": false
+    },
+    {
+      "width": 40,
+      "height": 40,
+      "price": 44,
+      "packaging_price": 12,
+      "delivery_price": 12,
+      "hit": false,
+      "popular": false
+    },
+    {
+      "width": 40,
+      "height": 60,
+      "price": 49,
+      "packaging_price": 12,
+      "delivery_price": 12,
+      "hit": false,
+      "popular": false
+    },
+    {
+      "width": 50,
+      "height": 50,
+      "price": 55,
+      "packaging_price": 14,
+      "delivery_price": 14,
+      "hit": false,
+      "popular": false
+    },
+    {
+      "width": 50,
+      "height": 70,
+      "price": 59,
+      "packaging_price": 14,
+      "delivery_price": 14,
+      "hit": true,
+      "popular": false
+    },
+    {
+      "width": 60,
+      "height": 60,
+      "price": 66,
+      "packaging_price": 16,
+      "delivery_price": 16,
+      "hit": false,
+      "popular": false
+    },
+    {
+      "width": 60,
+      "height": 80,
+      "price": 69,
+      "packaging_price": 16,
+      "delivery_price": 16,
+      "hit": false,
+      "popular": true
+    },
+    {
+      "width": 70,
+      "height": 70,
+      "price": 79,
+      "packaging_price": 18,
+      "delivery_price": 18,
+      "hit": false,
+      "popular": false
+    },
+    {
+      "width": 80,
+      "height": 80,
+      "price": 89,
+      "packaging_price": 18,
+      "delivery_price": 18,
+      "hit": false,
+      "popular": false
+    },
+    {
+      "width": 70,
+      "height": 100,
+      "price": 109,
+      "packaging_price": 20,
+      "delivery_price": 20,
+      "hit": true,
+      "popular": false
+    },
+    {
+      "width": 80,
+      "height": 120,
+      "price": 129,
+      "packaging_price": 24,
+      "delivery_price": 22,
+      "hit": false,
+      "popular": false
+    }
+  ],
+  
+  "delivery": {
+    "courier_minsk": {
+      "name": "Курьер по Минску",
+      "price": 15,
+      "fields": ["street", "house", "entrance", "floor", "apartment"]
+    },
+    "pickup": {
+      "name": "Самовывоз",
+      "price": 0,
+      "address": "г. Минск, район Минск Мир"
+    },
+    "post": {
+      "name": "Белпочта",
+      "price_depends_on_size": true,
+      "fields": ["address", "index"]
+    }
+  },
+  
+  "example_works": [
+    {
+      "category": "Семья",
+      "description": "Семейное фото на холсте",
+      "size": "50×70"
+    },
+    {
+      "category": "Дети",
+      "description": "Детский портрет",
+      "size": "40×60"
+    },
+    {
+      "category": "Пары",
+      "description": "Свадебное фото",
+      "size": "60×80"
+    },
+    {
+      "category": "Животные",
+      "description": "Портрет домашнего питомца",
+      "size": "50×50"
+    }
+  ]
+}
