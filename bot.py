@@ -16,13 +16,13 @@ from aiogram.types import WebAppInfo, MenuButtonWebApp, InlineKeyboardMarkup, In
 # ВАЖНО! Замените эти данные на свои:
 
 # 1. Токен вашего бота от @BotFather
-BOT_TOKEN = "ВСТАВЬТЕ_ВАШ_ТОКЕН_СЮДА"
+BOT_TOKEN = "8591299588:AAFAEPgoMdcCu-PcGM9jGJny1-NS1RJg3gQ"
 
 # 2. URL вашего Mini App (где лежит index.html)
-WEBAPP_URL = "https://ВАШ_САЙТ.com/index.html"
+WEBAPP_URL = "https://sevastsyanmatus-pixel.github.io/artholst-shop/index.html"
 
 # 3. Ваш Telegram ID (узнать у @userinfobot)
-ADMIN_CHAT_ID = 123456789  # Замените на ваш ID
+ADMIN_CHAT_ID = 6358403376  # Замените на ваш ID
 
 # ==================== ИНИЦИАЛИЗАЦИЯ ====================
 
