@@ -6,6 +6,7 @@ ARTHOLST Telegram Bot
 import asyncio
 import json
 import logging
+import os
 from datetime import datetime
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
@@ -13,16 +14,10 @@ from aiogram.types import WebAppInfo, MenuButtonWebApp, InlineKeyboardMarkup, In
 
 # ==================== НАСТРОЙКИ ====================
 
-# ВАЖНО! Замените эти данные на свои:
-
-# 1. Токен вашего бота от @BotFather
-BOT_TOKEN = "8591299588:AAFAEPgoMdcCu-PcGM9jGJny1-NS1RJg3gQ"
-
-# 2. URL вашего Mini App (где лежит index.html)
-WEBAPP_URL = "https://sevastsyanmatus-pixel.github.io/artholst-shop/index.html"
-
-# 3. Ваш Telegram ID (узнать у @userinfobot)
-ADMIN_CHAT_ID = 6358403376  # Замените на ваш ID
+# Получаем данные из переменных окружения GitHub Secrets
+BOT_TOKEN = os.getenv('BOT_TOKEN', 'YOUR_BOT_TOKEN_HERE')
+WEBAPP_URL = os.getenv('WEBAPP_URL', 'https://ВАШ_ЮЗЕРНЕЙМ.github.io/ВАШ_РЕПОЗИТОРИЙ/')
+ADMIN_CHAT_ID = int(os.getenv('ADMIN_CHAT_ID', '123456789'))
 
 # ==================== ИНИЦИАЛИЗАЦИЯ ====================
 
@@ -38,7 +33,6 @@ dp = Dispatcher()
 async def cmd_start(message: types.Message):
     """Команда /start - приветствие и кнопка магазина"""
     
-    # Клавиатура с кнопкой WebApp
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
             text="🎨 Открыть магазин",
@@ -76,26 +70,22 @@ async def handle_webapp_data(message: types.Message):
     """Обработка данных из Mini App (заказ)"""
     
     try:
-        # Парсим JSON данные из Mini App
         data = json.loads(message.web_app_data.data)
         
         order_id = data.get('orderId', 'N/A')
         order_message = data.get('message', '')
-        contact = data.get('contact', {})
-        user = data.get('user', {})
         total = data.get('total', 0)
         
-        # Логируем заказ
-        logger.info(f"Новый заказ #{order_id} от пользователя {user.get('id')}")
+        logger.info(f"Новый заказ #{order_id}")
         
         # Отправляем заказ администратору
         await bot.send_message(
             chat_id=ADMIN_CHAT_ID,
             text=order_message,
-            parse_mode=None  # Текст уже отформатирован
+            parse_mode=None
         )
         
-        # Отправляем подтверждение клиенту
+        # Подтверждение клиенту
         confirmation_text = f"""
 ✅ <b>Ваш заказ #{order_id} принят!</b>
 
@@ -132,9 +122,6 @@ async def handle_webapp_data(message: types.Message):
             reply_markup=keyboard
         )
         
-    except json.JSONDecodeError as e:
-        logger.error(f"Ошибка парсинга JSON: {e}")
-        await message.answer("❌ Произошла ошибка при обработке заказа. Попробуйте ещё раз.")
     except Exception as e:
         logger.error(f"Ошибка обработки заказа: {e}")
         await message.answer("❌ Произошла ошибка. Свяжитесь с менеджером: @oformitszakaz")
@@ -154,39 +141,12 @@ async def cmd_help(message: types.Message):
 4. Оформите заказ
 5. Отправьте фото менеджеру
 
-<b>Команды:</b>
-/start - Начать работу
-/help - Помощь
-/contact - Связаться с нами
-
 <b>Контакты:</b>
 📱 Менеджер: @oformitszakaz
 📸 Instagram: @artholst_belarus
     """
     
     await message.answer(help_text, parse_mode="HTML")
-
-
-@dp.message(Command("contact"))
-async def cmd_contact(message: types.Message):
-    """Команда /contact"""
-    
-    keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(
-            text="📱 Telegram менеджер",
-            url="https://t.me/oformitszakaz"
-        )],
-        [InlineKeyboardButton(
-            text="📸 Instagram",
-            url="https://instagram.com/artholst_belarus"
-        )]
-    ])
-    
-    await message.answer(
-        "📞 <b>Наши контакты:</b>\n\nВыберите удобный способ связи:",
-        parse_mode="HTML",
-        reply_markup=keyboard
-    )
 
 
 @dp.message()
@@ -223,7 +183,6 @@ async def on_startup():
     await set_menu_button()
     logger.info("✅ Бот ARTHOLST успешно запущен!")
     
-    # Отправляем уведомление админу о запуске
     try:
         await bot.send_message(
             ADMIN_CHAT_ID,
@@ -236,11 +195,7 @@ async def on_startup():
 async def main():
     """Главная функция"""
     logger.info("Запуск бота ARTHOLST...")
-    
-    # Регистрируем startup хук
     dp.startup.register(on_startup)
-    
-    # Запускаем polling
     await dp.start_polling(bot)
 
 
