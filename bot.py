@@ -15,9 +15,9 @@ from aiogram.types import WebAppInfo, MenuButtonWebApp, InlineKeyboardMarkup, In
 # ==================== НАСТРОЙКИ ====================
 
 # Получаем данные из переменных окружения GitHub Secrets
-BOT_TOKEN = os.getenv('BOT_TOKEN', 'YOUR_BOT_TOKEN_HERE')
-WEBAPP_URL = os.getenv('WEBAPP_URL', 'https://ВАШ_ЮЗЕРНЕЙМ.github.io/ВАШ_РЕПОЗИТОРИЙ/')
-ADMIN_CHAT_ID = int(os.getenv('ADMIN_CHAT_ID', '123456789'))
+BOT_TOKEN = os.getenv('BOT_TOKEN', '8591299588:AAFAEPgoMdcCu-PcGM9jGJny1-NS1RJg3gQ')
+WEBAPP_URL = os.getenv('WEBAPP_URL', 'https://sevastsyanmatus-pixel.github.io/artholst-shop/')
+ADMIN_CHAT_ID = int(os.getenv('ADMIN_CHAT_ID', '6358403376'))
 
 # ==================== ИНИЦИАЛИЗАЦИЯ ====================
 
